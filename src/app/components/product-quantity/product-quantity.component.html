@@ -1,0 +1,16 @@
+
+<div class="row no-gutters">
+  <div class="col-3">
+    <button class="btn btn-danger btn-block btn-lg text-white" (click)="removeFromCart()">
+      <i class="fa fa-minus" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="col text-center quantity">
+    {{ shoppingCart.getQuantity(product) }}
+  </div>
+  <div class="col-3">
+    <button class="btn btn-danger btn-block btn-lg text-white" (click)="addToCart()">
+      <i class="fa fa-plus" aria-hidden="true"></i>
+    </button>
+  </div>
+</div>

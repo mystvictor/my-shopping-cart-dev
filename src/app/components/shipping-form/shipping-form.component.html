@@ -1,0 +1,83 @@
+<div class="row sticky-top">
+  <div class="col">
+    <ng-template #anonymousUser>
+      <h5 class="text-danger title">
+        Nous somme sincèrement désolés mais, vous devez d'abord activez votre carte de membre.
+        Veuillez contacter le service à la clientèle au 514-812-1213.
+      </h5> 
+    </ng-template>
+
+    <div *ngIf="appUser.address && appUser.city && appUser.state && appUser.phone1 else anonymousUser">
+
+      <img class="thumbnail" [src]="appUser.imageUrl">
+      <h5 class="note font-weight-bold">{{ appUser.name }}</h5>
+      <h5 class="note">{{ appUser.address }}</h5> 
+      <h5 class="note">{{ appUser.city }} - {{ appUser.state }}</h5> 
+      <h5 class="note">T. {{ appUser.phone1 }}</h5> 
+      <h5 class="note">E. {{ appUser.email }}</h5> 
+  
+      <button (click)="placeOrder()" class="btn btn-info">confirmer</button>
+    </div>  
+  </div>
+</div>
+
+
+<!--<form #f="ngForm">
+  <div class="form-group">
+    <label for="">Nom complet *</label>
+    <input #contact="ngModel" name="contact" [(ngModel)]="shipping.contact" type="text" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="contact.touched && contact.invalid">
+      <div *ngIf="contact.errors.required">Champs requis, veuillez le completer.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="address">Addresse *</label>
+    <input #addressLine1="ngModel" name="addressLine1" [(ngModel)]="shipping.addressLine1" type="text" class="form-control" placeholder="Line 1" required>
+    <div class="alert alert-danger" *ngIf="addressLine1.touched && addressLine1.invalid">
+      <div *ngIf="addressLine1.errors.required">Champs requis, veuillez le completer.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for=""></label>
+    <input #addressLine2="ngModel" name="addressLine2" [(ngModel)]="shipping.addressLine2" type="text" class="form-control" placeholder="Line 2">
+  </div>
+  
+  <div class="form-group">
+    <label for="city">Ville *</label>
+    <input #city="ngModel" name="city" [(ngModel)]="shipping.city" type="text" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
+      <div *ngIf="city.errors.required">Champs requis, veuillez le completer.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="state">Département *</label>
+    <input #state="ngModel" name="state" [(ngModel)]="shipping.state" type="text" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="state.touched && state.invalid">
+      <div *ngIf="state.errors.required">Champs requis, veuillez le completer.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Téléphone *</label>
+    <input #phone="ngModel" name="phone" [(ngModel)]="shipping.phone" type="number" class="form-control" required>
+    <div class="alert alert-danger" *ngIf="phone.touched && phone.invalid">
+      <div *ngIf="phone.errors.required">Champs requis, veuillez le completer.</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="comments">Remarques *</label>
+    <div class="input-group">
+      <textarea #comments="ngModel" [(ngModel)]="shipping.comments" name="comments" id="comments" type="text" class="form-control">
+        
+      </textarea>
+    </div>
+  </div>
+
+  <button [disabled]="!f.valid" (click)="placeOrder()" class="btn btn-primary">Commander</button>
+  
+</form> -->
+  

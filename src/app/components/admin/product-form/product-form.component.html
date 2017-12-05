@@ -1,0 +1,90 @@
+<div class="row">
+  <div class="col-md-6">
+    <!--<p>
+      <a class="btn btn-outline-info btn-sm" routerLink="/admin/products"><i class="fa fa-chevron-circle-left"></i> RETOUR</a>
+    </p>-->
+
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+      
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="title">Nom *</label>
+            <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+              <div *ngIf="title.errors.required">Ce champs est requis, veillez le compléter.</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="code">Code *</label>
+            <input #code="ngModel" [(ngModel)]="product.code" name="code" id="code" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="code.touched && code.invalid">
+              <div *ngIf="code.errors.required">Ce champs est requis, veillez le compléter.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="price">Prix *</label>
+            <div class="input-group">
+              <input #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control" required [min]="0">
+              <span class="input-group-addon">
+                Gdes. 
+              </span>
+            </div>
+            <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+              <div *ngIf="price.errors.required">Ce champs est requis, veillez le compléter.</div>
+              <div *ngIf="price.errors.min">Le prix ne peut-être inférieur à 0.</div>
+              </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+              <label for="category">Catégorie *</label>
+              <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
+                <option value=""></option>
+                <option *ngFor="let c of categories$ | async" [value]="c.$key">{{ c.name }}</option>
+            </select>
+            <div class="alert alert-danger" *ngIf="category.touched && category.invalid">Ce champs est requis, veuillez choisir une catégorie.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="imageUrl">Image URL *</label>
+            <input #imageUrl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
+            <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+              <div *ngIf="imageUrl.errors.required">Ce champs est requis, veillez le compléter.</div>
+              <div *ngIf="imageUrl.errors.url">Lien URL non valide.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+      <div class="row">
+        <div class="col-md-6">
+          <button *ngIf="key" type="button" class="btn btn-outline-danger" (click)="delete()">
+            SUPPRIMER
+          </button>
+        </div>
+        <div class="col-md-6">
+          <button [disabled]="!f.valid" class="btn btn-outline-info align-right">
+            SAUVEGARDER
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="col-md-6">
+    <app-product [product]="product" [show-actions]="false"></app-product>
+  </div>
+
+</div>

@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-md-6">
+    <h5 class="note text-uppercase">{{ appUser.name }}</h5>
+    <h6 class="note">{{ appUser.email}}</h6> 
+
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+      <div class="form-group">
+        <label for="address">Adresse *</label>
+        <input #address="ngModel" name="address" [(ngModel)]="appUser.address" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="address.touched && address.invalid">
+          <div *ngIf="address.errors.required">Champs requis, veuillez le completer.</div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="city">Ville *</label>
+            <input #city="ngModel" name="city" [(ngModel)]="appUser.city" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
+              <div *ngIf="city.errors.required">Champs requis, veuillez le completer.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="city">Département *</label>
+            <input #state="ngModel" name="state" [(ngModel)]="appUser.state" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="state.touched && state.invalid">
+              <div *ngIf="state.errors.required">Champs requis, veuillez le completer.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="phone1">Téléphone principal *</label>
+            <input #phone1="ngModel" name="phone1" [(ngModel)]="appUser.phone1" type="number" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="phone1.touched && phone1.invalid">
+              <div *ngIf="phone1.errors.required">Champs requis, veuillez le completer.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="phone">Téléphone secondaire </label>
+            <input #phone2="ngModel" name="phone2" [(ngModel)]="appUser.phone2" type="number" class="form-control">
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="card">Numéro carte *</label>
+            <input #card="ngModel" name="card" [(ngModel)]="appUser.card" type="number" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="card.touched && card.invalid">
+              <div *ngIf="card.errors.required">Champs requis, veuillez le completer.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="balance">Solde *</label>
+            <input #balance="ngModel" name="balance" [(ngModel)]="appUser.balance" type="number" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="balance.touched && balance.invalid">
+              <div *ngIf="balance.errors.required">Champs requis, veuillez le completer.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <button [disabled]="!f.valid" class="btn btn-primary">Enregister</button>    
+    </form>    
+  </div>
+
+  <div class="col-md-6"></div>
+</div>
+
+  
+    

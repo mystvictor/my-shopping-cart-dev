@@ -1,0 +1,58 @@
+<!--<h1>Commandes</h1>-->
+<!--<table class="table">
+  <thead>
+    <tr>
+      <th>Client</th>
+      <th># Commande</th>
+      <th class="text-center">Date</th>
+      <th class="text-right">Total Commande</th>
+      <th></th>
+    </tr>
+  </thead> 
+  <tbody>
+    <tr *ngFor="let order of orders$ | async">
+      <td>{{ order.customer.name }}</td>
+      <td>{{ order.datePlaced }}</td>
+      <td class="text-center">{{ order.datePlaced | date: 'dd-MM-yyyy' }}</td>
+      <td class="text-right">{{ order.totalOrder | number : '1.2-2' }} Gdes</td>
+      <td class="text-right">
+        <a [routerLink]="['/my/orders/', order.$key]">Details</a>
+      </td>
+    </tr>
+  </tbody> 
+</table>-->
+
+<div class="row" style="margin-bottom: 50px;">
+    <div class="col">
+    
+        <data-table [items]="items" [itemCount]="itemCount" (reload)="reloadItems($event)">
+            
+            <data-table-column [property]="'customer.name'" [header]="'Client'" [resizable]="true">
+                <ng-template #dataTableCell let-item="item">
+                  {{ item.customer.name }}
+                </ng-template>
+            </data-table-column>
+        
+            <data-table-column [property]="'datePlaced'" [header]="'# Commande'" [resizable]="true"> </data-table-column>
+
+            <data-table-column [property]="'datePlaced'" [header]="'Date'" [resizable]="true">
+                <ng-template #dataTableCell let-item="item">
+                  {{ item.datePlaced | date: 'dd-MM-yyyy' }}
+                </ng-template>
+            </data-table-column>
+        
+            <data-table-column [property]="'totalOrder'" [header]="'Total Commande'" [resizable]="true"> 
+              <ng-template #dataTableCell let-item="item">
+                  <span class="text-align-right">{{ item.totalOrder | number : '1.2-2' }} Gdes</span>
+              </ng-template>
+            </data-table-column>
+        
+            <data-table-column [property]="'$key'">
+              <ng-template #dataTableCell let-item="item">
+                  <a [routerLink]="['/admin/orders/', item.$key]">Détails</a>
+              </ng-template>
+            </data-table-column>
+        
+        </data-table>
+    </div>
+  </div>

@@ -1,0 +1,28 @@
+<div *ngIf="product.title" class="card border-info">
+    <div class="card-body border-info">
+      <div class="bg-transparent text-center">
+        <img *ngIf="product.imageUrl" class="card-img-top img-rounded img-responsive" [src]="product.imageUrl" alt="{{ product.title }}"> 
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h6 class="text-center font-weight-bold text-lowercase">{{ product.code }}</h6>
+          <p class="text-center note font-weight-normal">{{ product.title }}</p>
+          <p *ngIf="product.price" class="text-center text-danger font-weight-bold">{{ product.price | number : '1.2-2' }} Gdes</p>
+        </div>
+      </div>   
+    </div>
+  
+    <div *ngIf="showActions && shoppingCart" class="card-footer bg-transparent border-info text-center text-info">
+
+      <button *ngIf="shoppingCart.getQuantity(product) === 0; else updateQuantity" class="btn btn-danger btn-block btn-lg" (click)="addToCart()">
+          Ajouter au Panier
+        </button>
+    
+        <ng-template #updateQuantity>
+          <product-quantity [product]="product" [shopping-cart]="shoppingCart"></product-quantity>
+        </ng-template>
+    </div>    
+</div>
+
+  

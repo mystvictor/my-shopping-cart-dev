@@ -1,0 +1,35 @@
+
+<h2 class="title">Historique</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th># Commande</th>
+      <th>Date</th>
+      <th>Total</th>
+      <th>Statut</th>
+      <th></th>
+    </tr>
+  </thead> 
+  <tbody>
+    <tr *ngFor="let order of orders$ | async">
+      <td> {{ order.datePlaced }}</td> <!--{{ order.customer.name }}-->
+      <td>{{ order.datePlaced | date: 'dd-MM-yyyy' }}</td>
+      <td>{{ order.totalOrder | number : '1.2-2' }} Gdes</td>
+      <td>
+        <span *ngIf="!order.delivered">Non Livré</span>
+        <span *ngIf="order.delivered">Livré</span>
+      </td>
+      <td>
+        <a [routerLink]="['/my/orders/', order.$key]">Details</a>
+      </td>   
+    </tr>
+  </tbody> 
+</table>
+
+
+  
+    
+    
+   
+

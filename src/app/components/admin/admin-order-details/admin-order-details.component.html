@@ -1,0 +1,31 @@
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title"># Commande : {{ order.datePlaced }}</h4>
+
+        <ul class="list-group list-group-flush">
+            <li *ngFor="let item of order.items" class="list-group-item">
+                {{ item.quantity }} x {{ item.product.title }}
+                <div class="float-right">
+                {{ item.totalPrice | number : '1.2-2' }} Gdes
+                </div>
+            </li>
+            <li class="list-group-item font-weight-bold">
+                Total 
+                <div class="float-right">
+                {{ order.totalOrder | number : '1.2-2' }} Gdes
+                </div>
+            </li>
+        </ul>
+
+        <button *ngIf="key && !order.delivered" type="button" class="btn btn-outline-info" (click)="update()">
+            Livrer
+        </button>
+    </div>
+</div>
+
+
+
+
+
+

@@ -1,1 +1,63 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+$primary-color: #17a2b8; //#00E4AC;
+$primary-color-hover: #00E4AC; //#b1c522;
+$bg: #2A3136;
+$text-color: #767879;
+$accent-color: #00E4AC;
+
+body { 
+  padding-top: 100px; 
+  font-family: 'Montserrat';
+  color: $text-color;
+  background: #fff;
+}
+
+h1, h2, h3 { 
+  margin-bottom: 1.5rem;
+}
+
+.navbar { 
+  border-bottom: 3px solid #e7e7e7;
+}
+
+.navbar-light .navbar-brand {
+  color: $primary-color;
+}
+
+.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+  color: $primary-color-hover;
+}
+
+label {
+  color: $primary-color;
+}
+
+.list-group-item.active {
+  background-color: $primary-color;
+  border-color: $primary-color;
+}
+
+.btn-primary {
+  background-color: $primary-color;
+  border-color: $primary-color;
+}
+
+.btn-primary:hover {
+  background-color: $primary-color-hover;
+  border-color: $primary-color-hover;
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+  background-color: $primary-color;
+  border-color: $primary-color;
+}
+
+.form-control:focus {
+  border-color: $primary-color;
+}
